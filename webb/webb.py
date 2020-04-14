@@ -170,7 +170,7 @@ def download_page(url,*arg):
             else:
                 return page
         except Exception as e:
-            print str(e)
+            print(str(e))
 
 
 
@@ -212,7 +212,7 @@ def url_normalize(url,seed_page):
     if url == "/":
         url = seed_page
         flag = 0
-        print (url)
+        print(url)
     if s.netloc == "":
         path = url.find('/')
         if path != -1:
@@ -651,7 +651,7 @@ def download_google_images(*arg):
         while i<len(search_keyword):
             items = []
             iteration = "Item no.: " + str(i+1) + " -->" + " Item name = " + str(search_keyword[i])
-            print (iteration)
+            print(iteration)
             search_keywords = search_keyword[i]
             search = search_keywords.replace(' ','%20')
 
@@ -659,9 +659,9 @@ def download_google_images(*arg):
             raw_html =  (download_page(url))
             items = items + (get_all_image_links(raw_html))
 
-            print ("Image Links = "+str(items))
-            print ("Total Image Links = "+str(len(items)))
-            print ("\n")
+            print("Image Links = "+str(items))
+            print("Total Image Links = "+str(len(items)))
+            print("\n")
             i = i+1
 
             info = open('output.txt', 'a')        #Open the text file called database.txt
@@ -670,16 +670,16 @@ def download_google_images(*arg):
     else:
         items = []
         iteration = "Item name = " + str(search_keyword)
-        print (iteration)
+        print(iteration)
         search = search_keyword.replace(' ','%20')
 
         url = 'https://www.google.com/search?q=' + search +  '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
         raw_html =  (download_page(url))
         items = items + (get_all_image_links(raw_html))
 
-        print ("Image Links = "+str(items))
-        print ("Total Image Links = "+str(len(items)))
-        print ("\n")
+        print("Image Links = "+str(items))
+        print("Total Image Links = "+str(len(items)))
+        print("\n")
 
         info = open('output.txt', 'a')        #Open the text file called database.txt
         info.write(str(search_keyword) + ": " + str(items) + "\n\n\n")         #Write the title of the page
@@ -870,6 +870,6 @@ def google_search(query):
     for result in results:
         title = result['title'].replace('<b>','').replace('</b>','')
         link = result['url']
-        print (title + '; ' + link)
+        print(title + '; ' + link)
 
 ########## End ##########
